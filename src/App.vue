@@ -1,42 +1,39 @@
 <!-- single file commponent -->
 <!-- HTML -->
 <template>
-  <h1 @click="increase">
+  <h1>
     {{ count }}
   </h1>
-  <!-- 디렉티브(v하이픈으로 제공하는 html 속성) > 조건문 -->
-  <div v-if="count > 4">
-    4보다 큽니다!
-  </div>
-  <!-- 디렉티브(v하이픈으로 제공하는 html 속성) > 반복문 -->
-  <ul>
-    <Fruit 
-      v-for="fruit in fruits" 
-      :key ="fruit"
-      :name ="fruit">
-      {{ fruit }}
-    </Fruit>
-  </ul>
+  
 </template>
 
 <!-- JS -->
 <script>
-import Fruit from '~/components/Fruit'
-
 export default {
-  components : {
-    Fruit
-  },
-  data : function () {
+  data() {
     return {
-      count : 0
-      ,fruits : ['Apple', 'Banana', 'Cherry']
+      count : 2
     }
-  },
-  methods : {
-    increase () {
-      this.count += 1
-    }
+  }
+  // 컴포넌트 생성직전이라 많이 쓰이지 않음
+  ,beforeCreate() {
+    console.log('Before Create!', this.count);
+    console.log(document.querySelector('h1'));
+  }
+  // 컴포넌트 생성 직후에 실행되어 많이 쓰임. 컴포넌트에 대한 접근 등
+  ,created() {
+    console.log('Created!', this.count);
+    console.log(document.querySelector('h1'));
+  }
+  // html 연결 직전이라 많이 쓰이지 않음
+  ,beforeMount() {
+    console.log('Before Mount!');
+    console.log(document.querySelector('h1'));
+  }
+  // html 연결 직후라 많이 쓰임. dom 조작 등
+  ,mounted() {
+    console.log('Mounted!');
+    console.log(document.querySelector('h1'));
   }
 }
 </script>
