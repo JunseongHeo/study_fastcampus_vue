@@ -1,13 +1,7 @@
 <!-- single file commponent -->
 <!-- HTML -->
 <template>
-  <h1 
-    v-once
-    @click="add">
-    {{ msg }}
-  </h1>
-  <h1 v-html="msg2"></h1>
-  
+  <h1 :class="msg">{{ msg }}</h1>
 </template>
 
 <!-- JS -->
@@ -15,8 +9,7 @@
 export default {
   data() {
     return {
-      msg : 'Hello world!',
-      msg2 : '<div style="color:red;">Hello world!</div>'
+      msg : 'active'
     }
   },
   methods : {
@@ -29,5 +22,8 @@ export default {
 
 <!-- CSS -->
 <style lang="scss">
-
+  .active {
+    color : royalblue;
+    font-size : 100px;
+  }
 </style>
