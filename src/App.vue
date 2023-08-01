@@ -1,7 +1,10 @@
 <!-- single file commponent -->
 <!-- HTML -->
 <template>
-  <h1 :class="msg">{{ msg }}</h1>
+  <h1 
+    :[attr]="'active'"
+    @[event]="add"
+  >{{ msg }}</h1>
 </template>
 
 <!-- JS -->
@@ -9,7 +12,9 @@
 export default {
   data() {
     return {
-      msg : 'active'
+      msg : 'active',
+      attr : 'class',
+      event : 'click'
     }
   },
   methods : {
